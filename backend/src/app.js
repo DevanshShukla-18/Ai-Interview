@@ -5,6 +5,7 @@ const cors = require("cors");
 
 //Routes
 const authRouter = require("../src/routes/auth.route");
+const interviewRouter = require("../src/routes/interview.routes");
 
 
 //Middleware
@@ -17,6 +18,7 @@ app.use(cors({
 
 //API
 app.use("/api/auth",authRouter);
+app.use("/api/interview",interviewRouter);
 
 
 module.exports = app;
