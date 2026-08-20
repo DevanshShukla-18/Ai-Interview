@@ -12,5 +12,29 @@ const interviewRouter = express.Router();
  */
 interviewRouter.post("/", authMiddleware.authUser, upload.single("resume"),interviewController.generateInterViewReportController);
 
+/**
+ * @route GET /api/interview/report/:interviewId
+ * @description Get interview report by id
+ * @access Private
+ */
+interviewRouter.get("/report/:interviewId", authMiddleware.authUser, interviewController.getInterViewReportByIdController);
+
+/**
+ * @route GET /api/interview
+ * @description Get all interview reports of the user
+ * @access Private
+ */
+interviewRouter.get("/", authMiddleware.authUser, interviewController.getAllInterViewReportsController);
+
+/**
+ * @route GET /api/interview/resume/pdf
+ * @description generate resume pdf on the basis of user self description, resume content and job description.
+ * @access private
+ */
+interviewRouter.post("/resume/pdf/:interviewReportId", authMiddleware.authUser, interviewController.generateResumePdfController)
+
+ 
+
+
 
 module.exports = interviewRouter;
